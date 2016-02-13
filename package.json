@@ -1,0 +1,25 @@
+{
+  "name": "wercker-node-ecs-demo",
+  "version": "1.0.0",
+  "description": "Demo node microservice deployed with wercker to ecs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//chiefy/wercker-node-ecs-demo"
+  },
+  "keywords": [
+    "ecs",
+    "aws",
+    "seneca",
+    "wercker",
+    "cd"
+  ],
+  "author": "Christopher Najewicz",
+  "license": "MIT",
+  "dependencies": {
+    "seneca": "^1.1.0"
+  }
+}

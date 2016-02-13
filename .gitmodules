@@ -1,0 +1,3 @@
+[submodule "terraform/ecs"]
+	path = terraform/ecs
+	url = git@github.com:chiefy/terraform-amazon-ecs.git
