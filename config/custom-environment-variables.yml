@@ -1,0 +1,3 @@
+redis-store:
+  host: SVC_REDIS_HOST
+  port: SVC_REDIS_PORT

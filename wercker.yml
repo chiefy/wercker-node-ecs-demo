@@ -1,0 +1,19 @@
+box: nodesource/trusty:4.3.0
+
+dev:
+  services:
+    - redis
+  steps:
+      - script:
+        name: set env vars
+        code: |
+          export NODE_ENV=development
+          export SVC_REDIS_HOST=${REDIS_PORT_6379_TCP_ADDR}
+      - script:
+        name: npm rebuild
+        code: npm rebuild
+
+      - internal/watch:
+        code: node index.js
+        reload: true
+
