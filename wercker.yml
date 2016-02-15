@@ -1,4 +1,8 @@
-box: nodesource/trusty:4.3.0
+box:
+  id: quay.io/chiefy/alpine-nodejs
+  tag: 4.3.0
+  registry: https://quay.io
+  cmd: /bin/sh
 
 dev:
   services:
@@ -9,6 +13,7 @@ dev:
         code: |
           export NODE_ENV=development
           export SVC_REDIS_HOST=${REDIS_PORT_6379_TCP_ADDR}
+
       - script:
         name: npm rebuild
         code: npm rebuild
