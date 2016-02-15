@@ -4,6 +4,7 @@
   "description": "Demo node microservice deployed with wercker to ecs",
   "main": "index.js",
   "scripts": {
+    "dev": "wercker dev --publish 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
