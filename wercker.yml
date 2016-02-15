@@ -22,3 +22,18 @@ dev:
         code: node index.js
         reload: true
 
+build:
+  steps:
+    - script:
+      name: set env vars
+      code: export NODE_ENV=test
+
+    - npm-install
+
+    - npm-test
+
+    - script:
+        name: copy files
+        code: |
+          cp $(which node) "$WERCKER_OUTPUT_DIR"
+          cp -RL node_modules terraform/*.tf config data api index.js package.json "$WERCKER_OUTPUT_DIR"
