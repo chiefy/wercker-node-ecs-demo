@@ -38,3 +38,13 @@ build:
           cp $(which node) "$WERCKER_OUTPUT_DIR"
           cp -RL node_modules config data api index.js package.json "$WERCKER_OUTPUT_DIR"
 
+deploy:
+  dockerhub:
+    - internal/docker-scratch-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        cmd: ./node ./index.js
+        tag: $WERCKER_GIT_COMMIT
+        ports: "3000"
+        repository: chiefy/wercker-ecs-demo
+        registry: https://registry.hub.docker.com
