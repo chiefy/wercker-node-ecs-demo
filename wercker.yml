@@ -1,6 +1,6 @@
 box:
   id: quay.io/chiefy/alpine-nodejs
-  tag: 4.3.0
+  tag: 4.3.1
   registry: https://quay.io
   cmd: /bin/sh
 
@@ -36,4 +36,5 @@ build:
         name: copy files
         code: |
           cp $(which node) "$WERCKER_OUTPUT_DIR"
-          cp -RL node_modules terraform/*.tf config data api index.js package.json "$WERCKER_OUTPUT_DIR"
+          cp -RL node_modules config data api index.js package.json "$WERCKER_OUTPUT_DIR"
+

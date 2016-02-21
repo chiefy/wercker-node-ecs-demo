@@ -4,6 +4,9 @@
   "description": "Demo node microservice deployed with wercker to ecs",
   "main": "index.js",
   "scripts": {
+    "plan-ecs": "pushd terraform/ecs && terraform plan -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
+    "apply-ecs": "pushd terraform/ecs && terraform apply -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
+    "destroy-ecs": "pushd terraform/ecs && terraform destroy -state ../../ecs.tfstate",
     "dev": "wercker dev --publish 3000",
     "test": "./node_modules/.bin/tape ./test/**/*.js"
   },
