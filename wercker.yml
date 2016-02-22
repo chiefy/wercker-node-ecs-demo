@@ -21,14 +21,17 @@ dev:
       - internal/watch:
         code: node index.js
         reload: true
-
 build:
   steps:
     - script:
-      name: set env vars
-      code: export NODE_ENV=test
+        name: set env vars
+        code: export NODE_ENV=test
 
     - npm-install
+
+    - script:
+        name: install test deps globally
+        code: npm install -g tape xo
 
     - npm-test
 
@@ -37,7 +40,6 @@ build:
         code: |
           cp $(which node) "$WERCKER_OUTPUT_DIR"
           cp -RL node_modules config data api index.js package.json "$WERCKER_OUTPUT_DIR"
-
 deploy:
   dockerhub:
     - internal/docker-scratch-push:

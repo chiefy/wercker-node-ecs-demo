@@ -34,3 +34,5 @@ node_modules
 _builds
 _steps
 ecs.tfstate
+_cache
+ecs.tfstate.backup

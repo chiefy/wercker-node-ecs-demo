@@ -1,28 +1,5 @@
 {
-  "name": "wercker-node-ecs-demo",
-  "version": "1.0.0",
-  "description": "Demo node microservice deployed with wercker to ecs",
-  "main": "index.js",
-  "scripts": {
-    "plan-ecs": "pushd terraform/ecs && terraform plan -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
-    "apply-ecs": "pushd terraform/ecs && terraform apply -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
-    "destroy-ecs": "pushd terraform/ecs && terraform destroy -state ../../ecs.tfstate",
-    "dev": "wercker dev --publish 3000",
-    "test": "./node_modules/.bin/tape ./test/**/*.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com//chiefy/wercker-node-ecs-demo"
-  },
-  "keywords": [
-    "ecs",
-    "aws",
-    "seneca",
-    "wercker",
-    "cd"
-  ],
   "author": "Christopher Najewicz",
-  "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.0",
     "config": "^1.19.0",
@@ -32,8 +9,32 @@
     "seneca": "^1.1.0",
     "seneca-redis-store": "0.0.8"
   },
+  "description": "Demo node microservice deployed with wercker to ecs",
   "devDependencies": {
+    "seneca-mem-store": "^0.5.0",
     "tape": "^4.4.0",
     "xo": "^0.12.1"
-  }
+  },
+  "keywords": [
+    "ecs",
+    "aws",
+    "seneca",
+    "wercker",
+    "cd"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "wercker-node-ecs-demo",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com//chiefy/wercker-node-ecs-demo"
+  },
+  "scripts": {
+    "apply-ecs": "pushd terraform/ecs && terraform apply -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
+    "destroy-ecs": "pushd terraform/ecs && terraform destroy -state ../../ecs.tfstate",
+    "dev": "wercker dev --publish 3000",
+    "plan-ecs": "pushd terraform/ecs && terraform plan -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
+    "test": "tape ./test/**/*.js"
+  },
+  "version": "1.0.0"
 }
