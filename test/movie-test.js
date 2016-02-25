@@ -2,6 +2,7 @@ const seneca = require('./util');
 const test = require('tape');
 
 seneca.ready(function () {
+
 	test('getMovie returns a seneca entity', function test(t) {
 		t.plan(4);
 		seneca.act({action: 'get', subject: 'movie', title: 'Die Hard'}, function (err, data) {
@@ -13,4 +14,5 @@ seneca.ready(function () {
 			t.equal(data, null, 'no data is returned');
 		});
 	});
+
 });
