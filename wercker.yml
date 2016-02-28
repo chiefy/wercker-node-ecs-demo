@@ -41,6 +41,7 @@ build:
           cp $(which node) "$WERCKER_OUTPUT_DIR"
           cp -RL node_modules config data api index.js package.json "$WERCKER_OUTPUT_DIR"
           cp terraform/*.tf terraform/*.json terraform/*.tmpl "$WERCKER_OUTPUT_DIR"
+
 deploy:
   dockerhub:
     - internal/docker-scratch-push:
@@ -53,16 +54,15 @@ deploy:
         registry: https://registry.hub.docker.com
 
   ecs:
-    steps:
-      - appnific/expandenv@0.1.3:
-          input_file: movie-api-task-template.json
-          output_file: movie-api-task.json
+    - appnific/expandenv@0.1.3:
+        input_file: movie-api-task-template.json
+        output_file: movie-api-task.json
 
-      - appnific/expandenv@0.1.3:
-          input_file: terraform.tfvars.tmpl
-          output_file: terraform.tfvars
+    - appnific/expandenv@0.1.3:
+        input_file: terraform.tfvars.tmpl
+        output_file: terraform.tfvars
 
-      - releasequeue/run-terraform@0.0.17:
-          action: apply
-          state_stor_bucket: tf_state_bucket
-          state_stor_key: movie_api_ecs
+    - releasequeue/run-terraform@0.0.17:
+        action: apply
+        state_stor_bucket: tf_state_bucket
+        state_stor_key: movie_api_ecs
