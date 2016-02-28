@@ -1,0 +1,43 @@
+[
+	{
+		"environment": [
+			{
+				"name": "NODE_ENV",
+				"value": "production"
+			},
+			{
+				"name": "SVC_REDIS_HOST",
+				"value": "redis"
+			}
+		],
+		"essential": true,
+		"image": "chiefy/wercker-ecs-demo:${WERCKER_GIT_COMMIT}",
+		"logConfiguration": {
+			"logDriver": "json-file"
+		},
+		"links": [
+			"redis"
+		],
+		"memory": 128,
+		"cpu": 256,
+		"mountPoints": [],
+		"name": "movie-api",
+		"portMappings": [
+			{
+				"containerPort": 3000,
+				"hostPort": 3000,
+				"protocol": "tcp"
+			}
+		]
+	},
+	{
+		"image": "redis",
+		"name": "redis",
+		"memory": 256,
+		"cpu": 256,
+		"essential": true,
+		"logConfiguration": {
+			"logDriver": "json-file"
+		}
+	}
+]
