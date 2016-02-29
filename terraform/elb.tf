@@ -15,7 +15,7 @@ resource "aws_elb" "movie_api_elb" {
 		healthy_threshold = 3
 		unhealthy_threshold = 3
 		timeout = 3
-		target = "HTTP:3000/"
+		target = "tcp:3000"
 		interval = 30
 	}
 
