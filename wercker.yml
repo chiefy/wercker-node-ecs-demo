@@ -40,7 +40,7 @@ build:
         code: |
           cp $(which node) "$WERCKER_OUTPUT_DIR"
           cp -RL node_modules config data api index.js package.json "$WERCKER_OUTPUT_DIR"
-          cp terraform/*.tf terraform/*.json terraform/*.tmpl "$WERCKER_OUTPUT_DIR"
+          cp terraform/*.tf terraform/*.json "$WERCKER_OUTPUT_DIR"
 
 deploy:
 
