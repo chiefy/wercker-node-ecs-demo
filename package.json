@@ -31,10 +31,11 @@
   },
   "scripts": {
     "apply-ecs": "pushd terraform/ecs && terraform apply -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
+    "plan-ecs": "pushd terraform/ecs && terraform plan -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
     "destroy-ecs": "pushd terraform/ecs && terraform destroy -state ../../ecs.tfstate",
     "dev": "wercker dev --publish 3000",
-    "plan-ecs": "pushd terraform/ecs && terraform plan -state ../../ecs.tfstate -var-file=terraform.tfvars ; popd",
-    "test": "tape ./test/**/*.js"
+    "test": "tape ./test/**/*.js",
+    "config-tf-remote": "terraform remote config -state=./movie-api-ecs.tfstate -backend=s3  -backend-config='region=us-east-1' -backend-config='bucket=tf_state_bucket' -backend-config='key=movie_api_ecs'"
   },
   "version": "1.0.0"
 }

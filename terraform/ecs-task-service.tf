@@ -1,4 +1,6 @@
 resource "aws_ecs_service" "movie_api" {
+	depends_on = ["aws_ecs_task_definition.movie_api"]
+
 	name = "${concat("movie_api-",var.env)}"
 	cluster = "${var.ecs_cluster_id}"
 	task_definition = "${aws_ecs_task_definition.movie_api.arn}"
@@ -10,4 +12,9 @@ resource "aws_ecs_service" "movie_api" {
 		container_name = "movie-api"
 		container_port = 3000
 	}
+}
+
+resource "aws_ecs_task_definition" "movie_api" {
+	family = "${concat("movie-api-",var.env)}"
+	container_definitions = "${file("movie-api-task.json")}"
 }
